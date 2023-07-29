@@ -1,8 +1,9 @@
+'use client';
 import Link from 'next/link'
  
 
-//Page not found page.
-export default function NotFound() {
+//Custom Error page.
+export default function GlobalError(){
   return (
     <section>
     <div className="container flex items-center min-h-screen px-6 py-12 mx-auto">
