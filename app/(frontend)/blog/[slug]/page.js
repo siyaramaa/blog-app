@@ -94,7 +94,7 @@ async function Blog({params}) {
         </div>
           <div className='authoDetails flex items-center justify-center md:justify-end space-x-2'>
                         {/* Author Image  */}
-            <Image src={urlFor(postData?.author.image).url()} width={40} height={40} className='rounded-full' />
+            <Image alt='Author' src={urlFor(postData?.author.image).url()} width={40} height={40} className='rounded-full' />
               <div className='flex flex-col'>
             <p className="text-xs font-semibold text-gray-800 dark:text-gray-300">
                           {/* Author Name  */}
