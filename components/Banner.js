@@ -1,11 +1,14 @@
 'use client';
-import Image from "next/image";
 import React from "react";
+import dynamic from "next/dynamic";
+import Image from "next/image";
 import urlFor from "@/lib/sanityImageUrl";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+
+dynamic(() => import("swiper/css"))
+dynamic(() => import("swiper/css/pagination"))
+dynamic(() => import("swiper/css/navigation"))
+
 
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 

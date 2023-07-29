@@ -1,9 +1,25 @@
 
-import Banner from "@/components/Banner";
-import Categories from "@/components/Categories";
+// import Categories from "@/components/Categories";
 import { client } from "@/lib/sanity";
 import urlFor from "@/lib/sanityImageUrl";
 import dynamic from "next/dynamic"
+
+const Banner = dynamic(() => import('@/components/Banner'), {
+    ssr: false,
+    loading: () => <div role="status" className="animate-pulse container h-[40vh] sm:h-[50vh]  md:h-[60vh] lg:h-[75vh] max-w-screen-xl p-6  dark:from-inherit dark:to-inherit relative dark:bg-gray-800">
+    <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px] mb-2.5"></div>
+    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+
+    <span className="sr-only">Loading...</span>
+</div>
+})
 
 const BlogCard = dynamic(() => import('@/components/BlogCard'), {
         ssr: false,
@@ -25,8 +41,8 @@ const BlogCard = dynamic(() => import('@/components/BlogCard'), {
 })
 
 export const metadata = {
-  title: 'Blog-web-app',
-  description: 'Website for blogging.',
+  title: 'Shree Rama Blog',
+  description: 'Website made for spritual blogs.',
 }
 
 export const revalidate = 30;
