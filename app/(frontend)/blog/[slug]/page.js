@@ -8,6 +8,16 @@ import urlFor from '@/lib/sanityImageUrl';
 import { notFound } from 'next/navigation'
 
 
+
+//Generating meta data for blog post and adding it to title of the page.
+export async function generateMetadata({ params }) {
+  return {
+    title: params.slug,
+  }
+}
+
+
+//Dynamically importing Blog Cards with loading skeleton.
 const BlogCard = dynamic(() => import('@/components/BlogCard'), {
         ssr: false,
         loading: () => 
@@ -27,6 +37,8 @@ const BlogCard = dynamic(() => import('@/components/BlogCard'), {
         
 })
 
+
+//Generating static params for the post and caching them to serve them faster.
 export async function generateStaticParams(){
   const query = `*[_type == "post"]
   {
@@ -43,6 +55,8 @@ export async function generateStaticParams(){
 }
 
 
+
+//Function to get post data by its slug.
 const getDataBySlug = async (slug) => {
         const query = `*[_type == "post" && slug.current == "${slug}"][0]
         {
@@ -54,14 +68,17 @@ const getDataBySlug = async (slug) => {
         return data;
 }
 
+
+
 async function Blog({params}) {
   
+  //Fetching data from the database for the post.
   const postData = await getDataBySlug(params.slug);
+  //Loading a page not found page incase if there is not any data for the post.
     if(!postData){
         notFound();
     }
 
-  // console.log(postData.author.name,postData.author.bio.children, urlFor(postData.author.image).url());
   return (
       
     <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
@@ -69,18 +86,22 @@ async function Blog({params}) {
 
       <div className="space-y-1 text-center">
         <div className="space-y-5">
+            {/* Post Title  */}
             <div className='postTitle'>
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
             {postData?.title}
           </h1>
         </div>
           <div className='authoDetails flex items-center justify-center md:justify-end space-x-2'>
+                        {/* Author Image  */}
             <Image src={urlFor(postData?.author.image).url()} width={40} height={40} className='rounded-full' />
               <div className='flex flex-col'>
             <p className="text-xs font-semibold text-gray-800 dark:text-gray-300">
+                          {/* Author Name  */}
                           {postData?.author.name}
             </p>
             <p className="text-xs font-medium text-gray-400">
+             {/* Formated Published Date of the post  */}
               {new Date(postData?._createdAt).toLocaleDateString("en-US", {
                 day: "numeric",
                 month: "long",
@@ -94,12 +115,16 @@ async function Blog({params}) {
 
       </div>
     </header>
-
+      
+      {/* Main page for whole content of the post */}
       <main className='w-full p-2 md:max-w-4xl md:p-5 mx-auto'>
+                    {/* Using portable text for rendering content of the post */}
                     <PortableText value={postData?.body} components={RichTextComponent} />
                     
       </main>
 
+
+        {/* Future implementation idea for recommendations */}
       {/* <div className='bottomContainer'>
             <h2 className="mb-4 mt-5 text-xl lg:text-2xl tracking-tight font-bold text-gray-900 dark:text-white">You might also like</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-10 py-2 gap-x-6 mt-5 border-gray-200 dark:border-gray-700">

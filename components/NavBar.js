@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import ThemeSwitch from './ThemeSwitch'
 import MobileNav from './MobileNav'
+import Image from 'next/image'
 
 function NavBar() {
   
@@ -11,12 +12,9 @@ function NavBar() {
           <div>
             <Link href="/">
               <div className="flex items-center justify-between">
-                <div className="mr-3">
-                      <p className='text-3xl px-5'>🚀</p>
+                  <div className="mr-3">
+                      <Image src={'/image/ramdhanus.png'} className=' absolute top-2 z-10 left-24' alt='weblogo' width={70} height={50} />
                 </div>
-                  <div className="hidden h-6 text-2xl font-semibold sm:block">
-                      BlogIt
-                  </div>
 
               </div>
             </Link>

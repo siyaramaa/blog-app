@@ -1,5 +1,7 @@
 import Link from 'next/link'
  
+
+//Page not found page.
 export default function NotFound() {
   return (
     <section>

@@ -38,10 +38,10 @@ export const RichTextComponent = {
                 <h2 className='text-3xl py-5 font-bold'>{children}</h2>
             ),
             blockquote: ({children}) => (
-                <blockquote className='border-l-cyan-400 border-l-4 pl-5 py-5 my-5'>{children}</blockquote>
+                <blockquote className='border-l-violet-500 border-l-4 pl-5 py-5 my-5'>{children}</blockquote>
             ),
             normal: ({children}) => (
-                <p className="text-xl">{children}</p>
+                <p className="text-lg md:text-xl">{children}</p>
 
             ),
     },
