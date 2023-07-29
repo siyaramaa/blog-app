@@ -5,7 +5,6 @@ import NavBar from "@/components/NavBar";
 import LayoutWrapper from "@/components/Wrapper";
 import { ThemeProvider } from "next-themes";
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
-import NewsLetter from "@/components/NewsLetter";
 
 
 export default function RootLayout({ children }) {
@@ -17,7 +16,6 @@ export default function RootLayout({ children }) {
 
           <LayoutWrapper>
             <NavBar />
-            <NewsLetter />
             {children}
           </LayoutWrapper>
         </ThemeProvider>

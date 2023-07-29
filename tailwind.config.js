@@ -6,6 +6,17 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   darkMode: 'class',
+  variants: {
+    extend: {
+      fontWeight: ["responsive", "hover", "focus"],
+      opacity: ["hover"],
+      blur: ["hover"],
+      borderColor: ["hover", "focus"],
+      margin: ["first", "last"],
+      backgroundColor: ["odd", "even"],
+      scale: ["hover", "active", "group-hover"],
+    },
+  },
   theme: {
     extend: {
       backgroundImage: {
@@ -17,7 +28,8 @@ module.exports = {
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
-    }
+    },
+    
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/aspect-ratio')],
 }

@@ -27,6 +27,22 @@ const BlogCard = dynamic(() => import('@/components/BlogCard'), {
         
 })
 
+export async function generateStaticParams(){
+  const query = `*[_type == "post"]
+  {
+    slug,
+  }
+  `; 
+  const slugs =  await client.fetch(query);
+  const slugRoutes = slugs.map((s) => s.slug.current);
+
+  return slugRoutes.map((slug) => ({
+      slug,
+  }))
+
+}
+
+
 const getDataBySlug = async (slug) => {
         const query = `*[_type == "post" && slug.current == "${slug}"][0]
         {
@@ -79,7 +95,7 @@ async function Blog({params}) {
       </div>
     </header>
 
-      <main className='max-w-4xl p-5 mx-auto'>
+      <main className='w-full p-2 md:max-w-4xl md:p-5 mx-auto'>
                     <PortableText value={postData?.body} components={RichTextComponent} />
                     
       </main>
