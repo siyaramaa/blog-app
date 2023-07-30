@@ -38,6 +38,10 @@ const BlogCard = dynamic(() => import('@/components/BlogCard'), {
 })
 
 
+//Revalidating data after every 30 secs which will serve the cached pages and rebuild them after 30 secs. (UPDATES CAN ONLY BE SEEN AFTER 30 seconds)
+export const revalidate = 30;
+
+
 //Generating static params for the post and caching them to serve them faster.
 export async function generateStaticParams(){
   const query = `*[_type == "post"]
