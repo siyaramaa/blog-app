@@ -41,9 +41,16 @@ export const RichTextComponent = {
                 <blockquote className='border-l-violet-500 border-l-4 pl-5 py-5 my-5'>{children}</blockquote>
             ),
             normal: ({children}) => (
-                <p className="text-lg md:text-xl">{children}</p>
+                <p className="text-lg md:text-xl py-5">{children}</p>
 
             ),
+            shloka: ({children}) => (
+                <div className="dark:text-gray-800 mx-auto my-4 rounded SankritQoute max-w-3xl p-5 text-center relative  bg-gradient-to-t from-yellow-200 to-yellow-50">
+                        <p className="font-medium leading-relaxed font-mono max-w-3xl mx-auto">{children}</p>
+                    <div className="top-0 rounded left-0 absolute bg-orange-500 bg-opacity-30 h-full w-full"></div>
+                     </div>
+
+            )
     },
     // marks: {
     //         links: ({children, value}) => {

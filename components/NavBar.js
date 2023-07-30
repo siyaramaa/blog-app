@@ -13,7 +13,7 @@ function NavBar() {
             <Link href="/">
               <div className="flex items-center justify-between">
                   <div className="mr-3">
-                      <Image src={'/image/ramdhanus.png'} className=' absolute top-2 z-10 left-24' alt='weblogo' width={70} height={50} />
+                      <Image src={'/image/ramdhanus.png'} className=' absolute top-2 z-10 left-5 w-14  md:left-24' alt='weblogo' width={70} height={50} />
                 </div>
 
               </div>
