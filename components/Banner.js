@@ -10,7 +10,6 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 function Banner({images}) {
-
   return (
        <Swiper
        centeredSlides={true}
@@ -28,7 +27,7 @@ function Banner({images}) {
             images.map((b) => (
 
 
-              <SwiperSlide key={b.bannerImage}>
+              <SwiperSlide key={b._id}>
 
               <Image
                 src={urlFor(b.bannerImage).url()}

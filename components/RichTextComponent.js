@@ -45,8 +45,8 @@ export const RichTextComponent = {
 
             ),
             shloka: ({children}) => (
-                <div class="mx-auto my-4 rounded SankritQoute max-w-3xl p-5 text-center relative">
-                        <p class="font-medium leading-relaxed font-mono max-w-3xl mx-auto">{children}</p>
+                <div className="mx-auto my-4 rounded SankritQoute max-w-3xl p-5 text-center relative">
+                        <p className="font-medium leading-relaxed font-mono max-w-3xl mx-auto">{children}</p>
 
                     
                      </div>
