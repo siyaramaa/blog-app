@@ -4,6 +4,7 @@ import React from 'react'
 import ThemeSwitch from './ThemeSwitch'
 import MobileNav from './MobileNav'
 import Image from 'next/image'
+import SearchBar from './SearchBar'
 
 function NavBar() {
   
@@ -20,9 +21,11 @@ function NavBar() {
             </Link>
 
           </div>
-          <div className='searchBar w-72 ml-5 hidden md:block'>
+          {/* <div className='searchBar w-72 ml-5 hidden md:block'>
               <input type="text" placeholder='Search blogs...' className='w-full px-5 py-2 rounded-lg border-none outline-none bg-slate-50 dark:bg-gray-700' />
-          </div>
+              
+          </div> */}
+          <SearchBar />
           <div className="flex items-center text-base leading-5">
             <div className="hidden sm:block">
               {NavLinksData.map((link) => (

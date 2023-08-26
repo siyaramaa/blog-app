@@ -4,9 +4,13 @@ import { useState } from 'react'
 // import Link from './Link'
 import NavLinksData from '@/data/NavLinksData'
 import Link from 'next/link';
-
+import SearchBar from './SearchBar';
+import { useEffect } from 'react'
+import { usePathname, useSearchParams  } from 'next/navigation'
 const MobileNav = () => {
   const [navShow, setNavShow] = useState(false)
+let pathname = usePathname();
+let searchParams = useSearchParams()
 
   const onToggleNav = () => {
     setNavShow((status) => {
@@ -19,6 +23,12 @@ const MobileNav = () => {
       return !status
     })
   }
+
+  useEffect(() => {
+    setNavShow(false);
+
+  }, [pathname, searchParams])
+
 
   return (
     <div className="sm:hidden">
@@ -67,6 +77,11 @@ const MobileNav = () => {
             </svg>
           </button>
         </div>
+          <div className='w-full flex items-center justify-center'>
+
+          <SearchBar mobile />
+          </div>
+        
         <nav className="fixed mt-8 h-full">
           {NavLinksData.map((link) => (
             <div key={link.title} className="px-12 py-4">
