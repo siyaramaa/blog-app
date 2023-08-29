@@ -26,6 +26,7 @@ let searchParams = useSearchParams()
 
   useEffect(() => {
     setNavShow(false);
+    document.body.style.overflow = 'auto';
 
   }, [pathname, searchParams])
 
