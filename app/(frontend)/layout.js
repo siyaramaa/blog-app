@@ -10,10 +10,10 @@ import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="dark:bg-slate-900">
+      <body className="dark:bg-slate-900 ">
         <ThemeProvider attribute="class" defaultTheme={"light"}>
-          <LayoutWrapper>
             <NavBar />
+          <LayoutWrapper>
             {children}
           </LayoutWrapper>
         </ThemeProvider>
