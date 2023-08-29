@@ -9,7 +9,7 @@ function Footer() {
   
       <div className="mt-3 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-32">
         <div className="mx-auto max-w-sm lg:max-w-none">
-          <h1 className='font-extrabold text-3xl'>The BLOG</h1>
+          <h1 className='font-extrabold text-3xl'>Jay Shreeram</h1>
           <p className="mt-4 text-center lg:text-left lg:text-lg">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium
             natus quod eveniet aut perferendis distinctio iusto repudiandae,

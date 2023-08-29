@@ -28,8 +28,8 @@ export const revalidate = 30;
 
 //Fetching all data of posts.
 const getBlogByQuery = async (searchQuery) => {
-      const query = `*[_type == "post" && [title, body[].children[].text] match "${searchQuery}"]`; 
-    
+      const query = `*[_type == "post" && [title,description] || body[].children[].text match "${searchQuery}"]`; 
+
 
 
       const data = await client.fetch(query);

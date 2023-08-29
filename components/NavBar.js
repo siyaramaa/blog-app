@@ -9,7 +9,7 @@ import SearchBar from './SearchBar'
 function NavBar() {
   
   return (
-    <header className="flex items-center justify-between py-5 rounded-b dark:border-none dark:bg-none">
+    <header className="flex sticky  top-0 z-50 border mb-4 bg-gradient-to-br from-yellow-100 to-red-100 items-center justify-between sm:justify-evenly py-3 rounded-b-lg dark:border-none dark:bg-none dark:bg-slate-600 dark:bg-opacity-10">
           <div>
             <Link href="/">
               <div className="flex items-center justify-between">

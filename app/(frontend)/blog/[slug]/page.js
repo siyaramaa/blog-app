@@ -66,6 +66,13 @@ const getDataBySlug = async (slug) => {
         {
           ...,
           author->,
+          "related": *[_type == "post" && slug.current !="${slug}" && count(categories[@._ref in ^.^.categories[]._ref]) > 0]{
+            title,
+            slug,
+            _createdAt,
+            mainImage,
+            description
+          },
         }
         `;
         const data = await client.fetch(query);
@@ -75,14 +82,12 @@ const getDataBySlug = async (slug) => {
 
 
 async function Blog({params}) {
-  
   //Fetching data from the database for the post.
   const postData = await getDataBySlug(params.slug);
   //Loading a page not found page incase if there is not any data for the post.
-    if(!postData){
-        notFound();
-    }
-
+  if(!postData){
+    notFound();
+  }
   return (
       
     <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
@@ -128,16 +133,43 @@ async function Blog({params}) {
       </main>
 
 
-        {/* Future implementation idea for recommendations */}
-      {/* <div className='bottomContainer'>
-            <h2 className="mb-4 mt-5 text-xl lg:text-2xl tracking-tight font-bold text-gray-900 dark:text-white">You might also like</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-10 py-2 gap-x-6 mt-5 border-gray-200 dark:border-gray-700">
+        {/* Rendering related posts*/}
 
-      <BlogCard author={'Sujan Thapa'} slug={'/blog/somethingdocs'} creationDate={'July 26, 2023'} title={'NextJS introduces new way of working with routes.'} tags={'NextJS'} description={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero magnam cumque temporibus debitis culpa quae laudantium, doloremque perspiciatis.'} />
-      <BlogCard author={'Sujan Thapa'} slug={'/blog/somethingdocs'} creationDate={'July 26, 2023'} title={'NextJS introduces new way of working with routes.'} tags={'NextJS'} description={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero magnam cumque temporibus debitis culpa quae laudantium, doloremque perspiciatis.'} />
+
+        {postData.related.length != 0 &&
+              <div className='bottomContainer'>
+              <h2 className="mb-4 mt-5 text-2xl lg:text-4xl tracking-tight font-bold text-gray-900 dark:text-white">You might also like</h2>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-10 py-2 gap-x-6 mt-5 border-gray-200 dark:border-gray-700">
+
+          {postData.related?.map((blog) => (
+            <BlogCard
+              key={blog?.slug.current}
+              author={"Sujan Thapa"}
+              slug={`/blog/${blog?.slug.current}`}
+              creationDate={new Date(blog?._createdAt).toLocaleDateString(
+                "en-US",
+                {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                }
+              )}
+              title={blog.title}
+              mainImg={urlFor(blog?.mainImage).url()}
+              // tags={[
+              //   { title: "NextJS", slug: "something" },
+              //   { title: "Javascript", slug: "javascript" },
+              // ]}
+              description={blog?.description}
+            />
+          ))}
+            
           </div>
+  
+  </div> 
+          }
 
-          </div>  */}
+
 
   </div>
 
