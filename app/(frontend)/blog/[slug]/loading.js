@@ -33,7 +33,7 @@ function Loading() {
       </div>
     </header>
     
-      <main className='max-w-6xl p-5 mx-auto space-y-10'>
+      <main className='max-w-3xl p-5 mx-auto space-y-10'>
       <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
     <h3 className="h-4 bg-gray-200 rounded-md dark:bg-gray-700 w-[40%]"></h3>
     <ul className="mt-5 space-y-3">

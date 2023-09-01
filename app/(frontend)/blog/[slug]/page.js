@@ -126,7 +126,7 @@ async function Blog({params}) {
     </header>
       
       {/* Main page for whole content of the post */}
-      <main className='w-full p-2 md:max-w-4xl md:p-5 mx-auto'>
+      <main className='w-full p-2 md:max-w-3xl md:p-5 mx-auto'>
                     {/* Using portable text for rendering content of the post */}
                     <PortableText value={postData?.body} components={RichTextComponent} />
                     
