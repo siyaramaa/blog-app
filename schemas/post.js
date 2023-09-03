@@ -39,6 +39,11 @@ export default defineType({
       type: 'text',
     }),
     defineField({
+      name: 'readTime',
+      title: 'Reading Time in minutes',
+      type: 'number',
+    }),
+    defineField({
       name: 'categories',
       title: 'Categories',
       type: 'array',

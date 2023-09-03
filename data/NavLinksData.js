@@ -1,11 +1,8 @@
 const NavLinksData = [
     // { href: '/sponsors', title: 'Sponsors' },
     { href: '/', title: 'Home' },
-    // { href: '/advertise', title: 'Advertise' },
-    // { href: '/topics', title: 'Topics' },
-    // { href: '/about', title: 'About' },
-
-
+    { href: '/search?byTag=Spirituality', title: 'Spirituality' },
+    { href: '/search?byTag=chalisa', title: 'Chalisa' },
   ]
   
   export default NavLinksData
