@@ -9,7 +9,7 @@ import SearchBar from './SearchBar'
 function NavBar() {
   
   return (
-    <header className="flex sticky  top-0 z-50 border mb-4 bg-gradient-to-br from-yellow-100 to-red-100 items-center justify-between sm:justify-evenly py-3 rounded-b-lg dark:border-none dark:bg-none dark:bg-slate-600 dark:bg-opacity-10">
+    <header className="flex sticky text-sm  top-0 z-50 border mb-4 bg-gradient-to-br from-yellow-100 to-red-100 items-center justify-between sm:justify-evenly py-3 rounded-b-lg dark:border-none dark:bg-none dark:bg-slate-600 dark:bg-opacity-10">
           <div>
             <Link href="/">
               <div className="flex items-center justify-between">
@@ -21,10 +21,6 @@ function NavBar() {
             </Link>
 
           </div>
-          {/* <div className='searchBar w-72 ml-5 hidden md:block'>
-              <input type="text" placeholder='Search blogs...' className='w-full px-5 py-2 rounded-lg border-none outline-none bg-slate-50 dark:bg-gray-700' />
-              
-          </div> */}
           <SearchBar />
           <div className="flex items-center text-base leading-5">
             <div className="hidden sm:block">

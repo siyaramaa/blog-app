@@ -6,7 +6,7 @@ function BlogCard({title, description, creationDate,tags,author, slug, mainImg})
 
 	return (
 	
-	<div className={`cardContainer group bg-opacity-10 bg-gray-500 dark:bg-opacity-10 dark:bg-gray-700   rounded-md relative container max-w-xl shadow-md  h-56 flex flex-col justify-center max-h-fit p-5 mx-auto`}>
+	<div className={`cardContainer group bg-opacity-10 bg-gray-500 dark:bg-opacity-10 dark:bg-gray-700   rounded-md relative container max-w-xl shadow-md  h-56 flex flex-col justify-center max-h-fit p-5 mx-auto text-sm`}>
 			<Image
           src={mainImg}
           alt="newsletterImage"
