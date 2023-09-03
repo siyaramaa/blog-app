@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { RichTextComponent } from '@/components/RichTextComponent';
 import urlFor from '@/lib/sanityImageUrl';
 import { notFound } from 'next/navigation'
+import Link from 'next/link';
 
 
 
@@ -66,6 +67,7 @@ const getDataBySlug = async (slug) => {
         {
           ...,
           author->,
+          categories[]->,
           "related": *[_type == "post" && slug.current !="${slug}" && count(categories[@._ref in ^.^.categories[]._ref]) > 0]{
             title,
             slug,
@@ -84,6 +86,7 @@ const getDataBySlug = async (slug) => {
 async function Blog({params}) {
   //Fetching data from the database for the post.
   const postData = await getDataBySlug(params.slug);
+
   //Loading a page not found page incase if there is not any data for the post.
   if(!postData){
     notFound();
@@ -135,6 +138,25 @@ async function Blog({params}) {
                     
 
   </div>
+  
+  {/* Rendering Categories */}
+  {
+    postData.categories?.length > 0 && 
+    <div className='postTags border-gray-200 dark:border-gray-700  border-t border-b px-2 py-5  flex items-center'>
+          <h1 className='p-3 text-slate-500'>Categories: </h1>
+          <div className='flex justify-center items-center sm:space-x-4 flex-wrap'>
+        {
+
+          postData.categories.map((tag) => (
+            <Link href={`/search?byTag=${tag.title}`} key={tag._id} className=" ml-2 mt-2 rounded-2xl cursor-pointer duration-75 transition-all ease-in-out p-2 bg-yellow-100 bg-opacity-60 hover:bg-opacity-100 dark:bg-violet-400 dark:bg-opacity-90 dark:hover:bg-opacity-100 dark:text-gray-900">{tag?.title}</Link>
+            
+          ))
+        }
+          	</div>
+            </div>             
+
+  }
+
   </main>
 
   
@@ -168,7 +190,7 @@ async function Blog({params}) {
           ))}
             
           </div>
-  
+
   </div> 
           }
 
