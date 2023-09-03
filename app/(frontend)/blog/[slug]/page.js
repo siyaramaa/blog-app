@@ -89,34 +89,38 @@ async function Blog({params}) {
     notFound();
   }
   return (
-      
-    <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
-    <header className="pt-6 xl:pb-6 border-t border-t-gray-200 dark:border-t-gray-700">
+    <section>
+
+    <main className="mx-auto w-full p-2 md:max-w-[700px] md:p-5">
+
+    <div className="">
+    <header className="pb-6 xl:pb-6 border-b border-b-gray-200 dark:border-b-gray-700">
 
       <div className="space-y-1 text-center">
         <div className="space-y-5">
             {/* Post Title  */}
-            <div className='postTitle'>
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
+            <div className='postTitle w-full'>
+          <h1 className="text-left p-2 max-w-[600px] md:leading-14 text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-300 sm:text-4xl sm:leading-10 md:text-4xl">
             {postData?.title}
           </h1>
         </div>
-          <div className='authoDetails flex items-center justify-center md:justify-end space-x-2'>
+          <div className='authoDetails flex items-center justify-center space-x-2'>
                         {/* Author Image  */}
             <Image alt='Author' src={urlFor(postData?.author.image).url()} width={40} height={40} className='rounded-full' />
-              <div className='flex flex-col'>
-            <p className="text-xs font-semibold text-gray-800 dark:text-gray-300">
-                          {/* Author Name  */}
-                          {postData?.author.name}
-            </p>
-            <p className="text-xs font-medium text-gray-400">
-             {/* Formated Published Date of the post  */}
-              {new Date(postData?._createdAt).toLocaleDateString("en-US", {
+              <div className='flex p-1 space-x-3'>
+            <p className="text-xs font-semibold text-gray-800 dark:text-gray-300"><i>Written</i> by {postData?.author.name}</p>
+            <p className="text-xs font-medium text-gray-400">·</p>
+            <p className="text-xs font-medium text-gray-400">{new Date(postData?._createdAt).toLocaleDateString("en-US", {
                 day: "numeric",
-                month: "long",
+                month: "short",
                 year: "numeric",
-              })}
-            </p>
+              })}</p>
+              {postData?.readTime && 
+              <>
+            <p className="text-xs font-medium text-gray-400 ">·</p>
+            <p className="text-xs font-medium text-gray-400 font-serif">{postData?.readTime}</p>
+              </>
+              }
               </div>
           </div>
         </div>
@@ -126,16 +130,15 @@ async function Blog({params}) {
     </header>
       
       {/* Main page for whole content of the post */}
-      <main className='w-full p-2 md:max-w-3xl md:p-5 mx-auto'>
                     {/* Using portable text for rendering content of the post */}
                     <PortableText value={postData?.body} components={RichTextComponent} />
                     
-      </main>
 
+  </div>
+  </main>
 
+  
         {/* Rendering related posts*/}
-
-
         {postData.related.length != 0 &&
               <div className='bottomContainer'>
               <h2 className="mb-4 mt-5 text-2xl lg:text-4xl tracking-tight font-bold text-gray-900 dark:text-white">You might also like</h2>
@@ -169,9 +172,10 @@ async function Blog({params}) {
   </div> 
           }
 
+  </section>
 
 
-  </div>
+
 
 
       
@@ -179,7 +183,3 @@ async function Blog({params}) {
 }
 
 export default Blog
-
-
-
-
